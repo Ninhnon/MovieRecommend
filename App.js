@@ -1,13 +1,8 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import LoginScreen from './src/screens/Login/LoginScreen';
 const App = () => {
-  return (
-    <SafeAreaView>
-      <View>
-        <Text>Hello Project</Text>
-      </View>
-    </SafeAreaView>
-  );
+  return <LoginScreen />;
 };
 export default App;
 const styles = StyleSheet.create({});
