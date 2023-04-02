@@ -17,7 +17,7 @@ let checkEmail = false;
 let checkName = false;
 let checkPassword1 = false;
 let checkPassword2 = false;
-const LoginScreen = props => {
+const SignupScreen = props => {
   const {navigation} = props;
   const [inputs, setInputs] = useState({
     Email: '',
@@ -62,7 +62,7 @@ const LoginScreen = props => {
     try {
       //await auth().signInWithEmailAndPassword(inputs.Email, inputs.Password);
       Alert.alert('Login successfully');
-      navigation.navigate('MyTab');
+      //navigation.navigate('MyTab');
     } catch (error) {
       Alert.alert('Failure');
     }
@@ -103,8 +103,14 @@ const LoginScreen = props => {
       <ImageBackground
         style={styles.container}
         source={require('../../assets/images/background.png')}>
-        <Text style={styles.nameScreen}>LOGIN</Text>
+        <Text style={styles.nameScreen}>SIGN UP</Text>
         <View style={styles.input}>
+          <CustomInput
+            label="Name"
+            onChangeText={text => handleOnchange(text, 'Name')}
+            error={errors.Name}
+            onFocus={() => handleError(null, 'Name')}
+          />
           <CustomInput
             label="Email"
             onChangeText={text => handleOnchange(text, 'Email')}
@@ -119,19 +125,29 @@ const LoginScreen = props => {
           />
 
           <CustomButton
-            label="Login"
+            label="Sign up"
             onclick={
               !validate.isValid ? handleSubmitForm : Alert.alert('Failure')
             }
           />
+
           <TouchableOpacity
-            style={styles.textForgotPass}
-            onPress={() => navigation.navigate('SignUp')}>
-            <Text style={styles.textSignup}>Sign up</Text>
+            style={styles.ButtonLogin}
+            onPress={() => {
+              // navigation.goBack();
+              console.log(
+                'hi: ',
+                checkEmail,
+                checkName,
+                checkPassword1,
+                checkPassword2,
+              );
+            }}>
+            <Text style={styles.textLogin}>Log in</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
     </SafeAreaView>
   );
 };
-export default LoginScreen;
+export default SignupScreen;

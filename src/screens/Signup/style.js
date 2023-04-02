@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   input: {
     position: 'absolute',
     width: '100%',
-    height: '40%',
+    height: '50%',
     top: '50%',
     alignItems: 'center',
   },

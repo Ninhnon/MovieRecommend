@@ -1,0 +1,177 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Rubik-Black.ttf",
+      "sha1": "467a70eb60fe4e0320174284b72c8f5bfd9112df"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-BlackItalic.ttf",
+      "sha1": "3497ed12182e30499d965ad1d5dc5259fbcac83c"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Bold.ttf",
+      "sha1": "3b001cf9a3c4bf1176d915e5f154e8c712c582d7"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-BoldItalic.ttf",
+      "sha1": "a61934a5b45096f2575080d82e114d4d1cfe3ba1"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-ExtraBold.ttf",
+      "sha1": "64416e75651e150f68c6ffbdad3bed9f18593e81"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-ExtraBoldItalic.ttf",
+      "sha1": "19035f0a6acba80bda0bc2939a6c097abdbcc42f"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Italic-VariableFont_wght.ttf",
+      "sha1": "f95fc50594f202f2f4be8f3186f86e8653e20057"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Italic.ttf",
+      "sha1": "6c91a29e57c7bb357fef68432aaad36f551f2c7d"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Light.ttf",
+      "sha1": "3b681bad0af19fdd24a1f302a19dcd4df150da89"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-LightItalic.ttf",
+      "sha1": "341c26d1014ba3fd058ad448348ddd501d21e75d"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Medium.ttf",
+      "sha1": "c91959545dae337c923ad06bfd0ef27f94a97933"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-MediumItalic.ttf",
+      "sha1": "f8d7b93df1aeb1567eaaf13c2ad3fc9f92c2e223"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Regular.ttf",
+      "sha1": "a7748ad21296101be2698dc585c7194ed43385ea"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-SemiBold.ttf",
+      "sha1": "6c52238fe8c885c62b5a92520557066d1e1279eb"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-SemiBoldItalic.ttf",
+      "sha1": "f47a6630a86eb4c5a6d0fe64fe8f4f0d260a0f47"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-VariableFont_wght.ttf",
+      "sha1": "14fe647dcd9c2629134bc93e956709cbc0919585"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Black.otf",
+      "sha1": "89d9387a7ba9407ee3384f0b1e1ce312c4190f25"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-BlackItalic.otf",
+      "sha1": "500dcb8d3050d3a70b995d2f05b1ef0bb7e9def7"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Bold.otf",
+      "sha1": "20817650465bd09f9ed0bf339531b13b78489052"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-BoldItalic.otf",
+      "sha1": "52b3cb587f1b5066015b5fa614d8aff0240c5235"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Heavy.otf",
+      "sha1": "8ef2033fa8ab551c1382d0b786757aa6cd49e6bf"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-HeavyItalic.otf",
+      "sha1": "f7ec25e602253fcfeb9c8286f6ee854c041bff53"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Light.otf",
+      "sha1": "a93f771b7a0a406304b321fd7c7bc79922d70ffd"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-LightItalic.otf",
+      "sha1": "f6f8d1f270175566634dd1eef8b4af71a0a4bcc8"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Medium.otf",
+      "sha1": "0ab3d1e22bf8781b2d4ca110319306363c21cd94"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-MediumItalic.otf",
+      "sha1": "5263268a36d7d1ebf0b7429d6288443f00d67e73"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Regular.otf",
+      "sha1": "c29dda2311e19f638f32c2dffc3c04c7b2ec5bcc"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-RegularItalic.otf",
+      "sha1": "8d7b32274128d82bd01e328d773af7df1f5f70aa"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Semibold.otf",
+      "sha1": "dabd35822f74a2b233596527300b789de4406c5e"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-SemiboldItalic.otf",
+      "sha1": "538f1c3e9f0432c9ce72ae7a43fc6d93e1c91c9f"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Thin.otf",
+      "sha1": "710f40ee65fed9028b457b02766979dac7e605e4"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-ThinItalic.otf",
+      "sha1": "10b873e21fc2137b4a06e607b0db9d05b1328a0e"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-Ultralight.otf",
+      "sha1": "5732b9965b1ee72ba631519e9da92bae2429573e"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Display-UltralightItalic.otf",
+      "sha1": "1db6d1e9aac6ad33bc15b06b90463dee4d2d3a60"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Black.otf",
+      "sha1": "2da10fa4ae334947087917844e0316cbce730e69"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Bold.otf",
+      "sha1": "745fb5fc263ee7e4d86211f1680bd928c327040a"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Heavy.otf",
+      "sha1": "85e8f7b4b33e7f5b6065947ae4a7e885cdcc8d75"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Light.otf",
+      "sha1": "910cab7f17ab0b65ce8a0a09fddc152dc2b4f5bb"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Medium.otf",
+      "sha1": "889faa176363f8b8e629aeaacdf85c07d1312d8d"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Regular.otf",
+      "sha1": "ab2491a7db1d0a1792e50aefd4eea4bc46215742"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Semibold.otf",
+      "sha1": "00fd8c58ca31cc2794b221405884a1601f50558f"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Thin.otf",
+      "sha1": "ec84d72ada4a56604edc41df8a229aca16ff613b"
+    },
+    {
+      "path": "src/assets/fonts/SF-Pro-Rounded-Ultralight.otf",
+      "sha1": "f0375b7b4fff814ce30c9e43ddee6d3a5d4bd607"
+    }
+  ]
+}
