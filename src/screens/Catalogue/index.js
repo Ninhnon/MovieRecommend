@@ -1,10 +1,12 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import styles from './style';
-const Catalogue = () => {
+import HeaderWithBack from '../../components/Headers/HeaderWithBack';
+const Catalogue = props => {
+  const {navigation} = props;
   return (
-    <SafeAreaView>
-      <Text>Catalogue</Text>
+    <SafeAreaView style={styles.container}>
+      <HeaderWithBack onPress={() => navigation.goBack()} title="CATALOGUE" />
     </SafeAreaView>
   );
 };

@@ -1,10 +1,12 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import HeaderWithBack from '../../components/Headers/HeaderWithBack';
 import styles from './style';
-const Favorite = () => {
+const Favorite = props => {
+  const {navigation} = props;
   return (
-    <SafeAreaView>
-      <Text>Favorite</Text>
+    <SafeAreaView style={styles.container}>
+      <HeaderWithBack onPress={() => navigation.goBack()} title="FAVORITE" />
     </SafeAreaView>
   );
 };
