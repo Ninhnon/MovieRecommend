@@ -25,7 +25,7 @@ const Search = props => {
 const styles = StyleSheet.create({
   header: {
     width: '80%',
-    height: 60,
+    height: 50,
     margin: '2%',
     marginBottom: '2%',
     flexDirection: 'row',

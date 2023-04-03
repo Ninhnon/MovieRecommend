@@ -9,8 +9,7 @@ import {
 import CUSTOM_COLOR from '../.././constants/colors.js';
 import MovieHome from './MovieHome.js';
 import {IMV_captain} from '../../assets/images/index.js';
-const MovieHomeList = props => {
-  const {navigation} = props;
+const RelateMovies = props => {
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
@@ -45,6 +44,7 @@ const styles = StyleSheet.create({
     height: '32%',
     margin: '4%',
     marginLeft: '4%',
+    top: '62%',
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#000',
@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
     top: 4,
   },
 });
-export default MovieHomeList;
+export default RelateMovies;
