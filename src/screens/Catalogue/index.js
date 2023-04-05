@@ -1,40 +1,65 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View, Image} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+} from 'react-native';
 import styles from './style';
 import HeaderWithBack from '../../components/Headers/HeaderWithBack';
 import {IMV_captain_american} from '../../assets/images';
-import SecondaryButton from '../../components/SecondaryButton';
-import CustomButton from '../../components/CustomButton';
-import {IC_Option} from '../../assets/icons';
+import MovieCatalogue from '../../components/Cards/MovieCatalogue';
 const Catalogue = props => {
   const {navigation} = props;
   return (
     <SafeAreaView style={styles.container}>
       <HeaderWithBack onPress={() => navigation.goBack()} title="CATALOGUE" />
-      <View style={styles.listMovies}>
-        <View style={styles.movie}>
-          <View style={styles.imageContainer}>
-            <Image source={IMV_captain_american} style={styles.image} />
-          </View>
-          <View style={styles.description}>
-            <Text style={styles.titleMovie} numberOfLines={2}>
-              Captain American Hell 2 3 4
-            </Text>
-            <Text style={styles.genreMovie} numberOfLines={1}>
-              Action, Adventure American Captain American Captain American
-            </Text>
-            <View style={styles.buttonContainer}>
-              <SecondaryButton
-                label="Watch Now"
-                onPress={() => navigation.navigate('Description')}
-              />
-            </View>
-            <View style={styles.iconContainer}>
-              <Image source={IC_Option} />
-            </View>
-          </View>
-        </View>
-      </View>
+      <ScrollView style={styles.listMovies}>
+        <MovieCatalogue
+          imageMovie={IMV_captain_american}
+          title="Captain America Captain America Captain America"
+          genre="Action, Adventure Captain America"
+          isPrimary={true}
+          isFavorite={false}
+        />
+        <MovieCatalogue
+          imageMovie={IMV_captain_american}
+          title="Captain America Captain America Captain America"
+          genre="Action, Adventure Captain America"
+          isPrimary={true}
+          isFavorite={true}
+        />
+        <MovieCatalogue
+          imageMovie={IMV_captain_american}
+          title="Captain America Captain America Captain America"
+          genre="Action, Adventure Captain America"
+          isPrimary={true}
+          isFavorite={false}
+        />
+        <MovieCatalogue
+          imageMovie={IMV_captain_american}
+          title="Captain America Captain America Captain America"
+          genre="Action, Adventure Captain America"
+          isPrimary={true}
+          isFavorite={true}
+        />
+        <MovieCatalogue
+          imageMovie={IMV_captain_american}
+          title="Captain America Captain America Captain America"
+          genre="Action, Adventure Captain America"
+          isPrimary={true}
+          isFavorite={false}
+        />
+        <MovieCatalogue
+          imageMovie={IMV_captain_american}
+          title="Captain America Captain America Captain America"
+          genre="Action, Adventure Captain America"
+          isPrimary={true}
+          isFavorite={true}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };

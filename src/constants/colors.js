@@ -28,7 +28,9 @@ const CUSTOM_COLOR = {
   LightBlue: '#65AAEA',
   PrimaryColor: '#E82251',
   SecondaryColor: '#FF9933',
-  SecondaryColorText: 'rgba(136, 126, 126, 0.8)',
+  SecondaryColorText: 'rgba(255, 255, 255, 0.8)',
+  MovieBackground: '#24233B',
+  IconBackground: '#3B3B51',
 };
 
 export default CUSTOM_COLOR;
