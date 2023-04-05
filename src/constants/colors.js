@@ -26,6 +26,9 @@ const CUSTOM_COLOR = {
   LightGray: '#F8F2EE',
   RegularGray: '#78746D',
   LightBlue: '#65AAEA',
+  PrimaryColor: '#E82251',
+  SecondaryColor: '#FF9933',
+  SecondaryColorText: 'rgba(136, 126, 126, 0.8)',
 };
 
 export default CUSTOM_COLOR;
