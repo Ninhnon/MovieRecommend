@@ -10,9 +10,7 @@ import {
 const MovieHome = props => {
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
-      <ImageBackground
-        source={props.source}
-        style={styles.img}></ImageBackground>
+      <ImageBackground source={props.source} style={styles.img} />
       <View style={styles.detail}>
         <Text style={styles.name}>{props.name}</Text>
         <StarRating

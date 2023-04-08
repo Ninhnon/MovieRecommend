@@ -1,3 +1,10 @@
 export {default as EyeIcon1} from './PasswordIcons.png';
 export {default as EyeIcon2} from './Password_Icons.png';
 export {default as IC_Back} from './IC_BACK';
+export {default as IC_Option} from './icon_option.png';
+export {default as IC_Favorite} from './ic_heart_red.png';
+export {default as IC_UnFavorite} from './ic_heart_white.png';
+export {default as IC_Profile} from './icon-profile.png';
+export {default as IC_Notification} from './icon-notification.png';
+export {default as IC_History} from './icon-history.png';
+export {default as IC_Logout} from './icon-logout.png';

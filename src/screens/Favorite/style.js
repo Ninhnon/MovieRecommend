@@ -7,6 +7,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: CUSTOM_COLOR.Black,
   },
+  listMovies: {
+    flex: 1,
+    width: '100%',
+    height: 'auto',
+  },
 });
 
 export default styles;
