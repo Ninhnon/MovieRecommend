@@ -1,22 +1,12 @@
 import React from 'react';
-import {
-  View,
-  TextInput,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import CUSTOM_COLOR from '../.././constants/colors.js';
 import {IMG_Icon} from '../.././assets/images/index.js';
 const Search = props => {
   return (
     <TouchableOpacity style={styles.header} onPress={props.onPress}>
       <View style={styles.search}>
-        <TextInput
-          placeholder="Search"
-          style={styles.search}
-          hitSlop={{top: 20, bottom: 20, left: 100, right: 50}}
-        />
+        <Text>search</Text>
       </View>
       <Image source={IMG_Icon} style={styles.image} />
     </TouchableOpacity>

@@ -5,6 +5,8 @@ import LoginScreen from '../screens/Login/LoginScreen';
 import SignUp from '../screens/Signup/SignupScreen.js';
 import Description from '../screens/Description';
 import MyTab from './tab.js';
+import Home from '../screens/Home';
+import Search from '../screens/Search';
 
 const Stack = createNativeStackNavigator();
 function StackNavigator() {
@@ -15,6 +17,8 @@ function StackNavigator() {
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="MyTab" component={MyTab} />
+      <Stack.Screen name="Description" component={Description} />
+      <Stack.Screen name="Search" component={Search} />
     </Stack.Navigator>
   );
 }
