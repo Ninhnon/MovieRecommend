@@ -62,7 +62,8 @@ const LoginScreen = props => {
     try {
       //await auth().signInWithEmailAndPassword(inputs.Email, inputs.Password);
       //Alert.alert('Login successfully');
-      navigation.navigate('MyTab');
+      navigation.navigate('Next');
+      console.log('gg');
     } catch (error) {
       Alert.alert('Failure');
     }

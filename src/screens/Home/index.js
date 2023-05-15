@@ -8,12 +8,14 @@ import {
 import styles from './style';
 import HeaderHome from '../../components/Headers/HeaderHome';
 import Search from '../../components/Cards/Search';
-import ChooseCategories from '../../components/Cards/ChooseCategories';
 import React, {useState, useEffect} from 'react';
 import {initData} from '../../data/dataservice';
 import {Movie} from '../../models/movie';
 import {useNavigation} from '@react-navigation/native';
 import MovieHome from '../../components/Cards/MovieHome';
+import axios from 'axios';
+const URL = 'https://web-movies-api-azurewebsites.net/';
+
 const Home = () => {
   const navigation = useNavigation();
   useEffect(() => {
@@ -33,14 +35,57 @@ const Home = () => {
     };
     loadMovies();
   }, []);
+  const predictNewUser = async genres => {
+    try {
+      const response = await axios.post(
+        'https://web-movie-api.azurewebsites.net/predict_new_user',
+        {
+          genres: genres,
+        },
+        {headers: {'Content-Type': 'application/json'}},
+      );
+      setFilterMovies(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const predictOldUser = async userId => {
+    try {
+      const response = await axios.post(
+        'https://web-movie-api.azurewebsites.net/predict',
+        {
+          userId: userId,
+        },
+        {headers: {'Content-Type': 'application/json'}},
+      );
+      setFilterMovies(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const categories = [
+    {id: 0, name: 'Drama'},
     {id: 1, name: 'Action'},
     {id: 2, name: 'Adventure'},
-    {id: 3, name: 'Comedy'},
-    {id: 4, name: 'Drama'},
-    {id: 5, name: 'Horror'},
-    {id: 6, name: 'Tom'},
+    {id: 3, name: 'Fantasy'},
+    {id: 4, name: 'Musical'},
+    {id: 5, name: 'Comedy'},
+    {id: 6, name: 'Crime'},
+    {id: 7, name: '(no genres listed)'},
+    {id: 8, name: 'Film-Noir'},
+    {id: 9, name: 'Animation'},
+    {id: 10, name: 'Thriller'},
+    {id: 11, name: 'Western'},
+    {id: 12, name: 'War'},
+    {id: 13, name: 'Mystery'},
+    {id: 14, name: 'Horror'},
+    {id: 15, name: 'Children'},
+    {id: 16, name: 'Documentary'},
+    {id: 17, name: 'Romance'},
+    {id: 18, name: 'Sci-Fi'},
+    {id: 19, name: 'IMAX'},
   ];
+
   const renderItem = ({item}) => (
     <TouchableOpacity
       onPress={() => navigation.navigate('Description', {movie: item})}>
@@ -100,6 +145,22 @@ const Home = () => {
               })
             }>
             <Text style={styles.viewAll}>View All</Text>
+          </TouchableOpacity>
+        </View>
+        <FlatList
+          horizontal
+          data={filterMovies}
+          renderItem={renderItem}
+          keyExtractor={item => item.movieId}
+        />
+      </View>
+      <View style={styles.movieRecommend}>
+        <View style={styles.heading}>
+          <TouchableOpacity onPress={() => predictNewUser('Comedy')}>
+            <Text style={styles.title}>NewUser</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => predictOldUser(21)}>
+            <Text style={styles.viewAll}>OldUser</Text>
           </TouchableOpacity>
         </View>
         <FlatList

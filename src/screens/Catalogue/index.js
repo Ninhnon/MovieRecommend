@@ -58,7 +58,6 @@ const Catalogue = ({route}) => {
       />
       <ScrollView style={styles.listMovies}>
         <FlatList
-          horizontal
           data={movies}
           renderItem={renderItem}
           keyExtractor={item => item.movieId}
