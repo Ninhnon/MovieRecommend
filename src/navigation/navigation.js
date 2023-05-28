@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator();
 function StackNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="MyTab"
+      initialRouteName="Login"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignUp} />

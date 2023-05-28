@@ -4,7 +4,6 @@ import CUSTOM_COLOR from '../.././constants/colors.js';
 import MovieHome from './MovieHome.js';
 import {useNavigation} from '@react-navigation/native';
 const MovieHomeList = props => {
-  const navigation = useNavigation();
   const renderItem = ({item}) => (
     <TouchableOpacity
       // onPress={() => navigation.navigate('Description', {movie: item})}>

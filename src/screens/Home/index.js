@@ -14,6 +14,8 @@ import {Movie} from '../../models/movie';
 import {useNavigation} from '@react-navigation/native';
 import MovieHome from '../../components/Cards/MovieHome';
 import axios from 'axios';
+import MovieContext from '../../data/MovieContext';
+import {MovieProvider} from '../../data/MovieContext';
 const URL = 'https://web-movies-api-azurewebsites.net/';
 
 const Home = () => {
@@ -94,6 +96,7 @@ const Home = () => {
   );
   const [movies, setMovies] = useState([]);
   const [filterMovies, setFilterMovies] = useState([]);
+  const {recommendMovies} = React.useContext(MovieContext);
   const [selectedValue, setSelectedValue] = useState(categories[0]);
   const getMoviesByCategory = category => {
     return movies.filter(movie => {
@@ -159,13 +162,13 @@ const Home = () => {
           <TouchableOpacity onPress={() => predictNewUser('Comedy')}>
             <Text style={styles.title}>NewUser</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => predictOldUser(21)}>
+          <TouchableOpacity onPress={() => console.log(recommendMovies)}>
             <Text style={styles.viewAll}>OldUser</Text>
           </TouchableOpacity>
         </View>
         <FlatList
           horizontal
-          data={filterMovies}
+          data={recommendMovies}
           renderItem={renderItem}
           keyExtractor={item => item.movieId}
         />

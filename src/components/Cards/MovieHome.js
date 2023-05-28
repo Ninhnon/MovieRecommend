@@ -17,12 +17,7 @@ const MovieHome = ({movie}) => {
           disabled={false}
           maxStars={5}
           rating={3}
-          starStyle={{
-            color: '#f1c40f',
-            marginRight: 20,
-          }}
           containerStyle={styles.star}
-          ratingContainerStyle={{marginVertical: 20}}
           starSize={10}
           selectedStar={rating => this.onStarRatingPress(rating)}
         />
