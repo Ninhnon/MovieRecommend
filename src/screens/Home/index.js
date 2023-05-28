@@ -51,20 +51,7 @@ const Home = () => {
       console.error(error);
     }
   };
-  const predictOldUser = async userId => {
-    try {
-      const response = await axios.post(
-        'https://web-movie-api.azurewebsites.net/predict',
-        {
-          userId: userId,
-        },
-        {headers: {'Content-Type': 'application/json'}},
-      );
-      setFilterMovies(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
   const categories = [
     {id: 0, name: 'Drama'},
     {id: 1, name: 'Action'},
@@ -159,12 +146,7 @@ const Home = () => {
       </View>
       <View style={styles.movieRecommend}>
         <View style={styles.heading}>
-          <TouchableOpacity onPress={() => predictNewUser('Comedy')}>
-            <Text style={styles.title}>NewUser</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log(recommendMovies)}>
-            <Text style={styles.viewAll}>OldUser</Text>
-          </TouchableOpacity>
+          <Text style={styles.title}>Movie Recommend For You</Text>
         </View>
         <FlatList
           horizontal
