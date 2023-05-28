@@ -24,7 +24,6 @@ const OldUser = ({navigation}) => {
         {headers: {'Content-Type': 'application/json'}},
       );
       updateMovieList(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
