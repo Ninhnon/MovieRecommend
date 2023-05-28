@@ -1,16 +1,16 @@
 import React from 'react';
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {FlatList, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import CUSTOM_COLOR from '../.././constants/colors.js';
 import MovieHome from './MovieHome.js';
-import {IMV_captain} from '../../assets/images/index.js';
+import {useNavigation} from '@react-navigation/native';
 const MovieHomeList = props => {
-  const {navigation} = props;
+  const renderItem = ({item}) => (
+    <TouchableOpacity
+      // onPress={() => navigation.navigate('Description', {movie: item})}>
+      onPress={console.log(item)}>
+      <MovieHome item={item} />
+    </TouchableOpacity>
+  );
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
@@ -19,23 +19,12 @@ const MovieHomeList = props => {
           <Text style={styles.viewAll}>View All</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView horizontal={true}>
-        <MovieHome
-          source={IMV_captain}
-          name="CAPTAIN MaRVEL"
-          onPress={props.onPress}
-        />
-        <MovieHome
-          source={IMV_captain}
-          name="CAPTAIN MaRVEL"
-          onPress={props.onPress}
-        />
-        <MovieHome
-          source={IMV_captain}
-          name="CAPTAIN MaRVEL"
-          onPress={props.onPress}
-        />
-      </ScrollView>
+      <FlatList
+        horizontal
+        data={props.movies}
+        renderItem={renderItem}
+        keyExtractor={item => item.movieId}
+      />
     </View>
   );
 };

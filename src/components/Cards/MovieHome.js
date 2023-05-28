@@ -4,28 +4,25 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
-const MovieHome = props => {
+const MovieHome = ({movie}) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={props.onPress}>
-      <ImageBackground source={props.source} style={styles.img} />
+    <View style={styles.container}>
+      <ImageBackground source={{uri: movie.image}} style={styles.img} />
       <View style={styles.detail}>
-        <Text style={styles.name}>{props.name}</Text>
+        <Text style={styles.name}>{movie.title}</Text>
         <StarRating
           disabled={false}
           maxStars={5}
           rating={3}
           containerStyle={styles.star}
           starSize={10}
-          starStyle={{marginHorizontal: -30}}
           selectedStar={rating => this.onStarRatingPress(rating)}
-          fullStarColor={'#f1c40f'}
-          emptyStarColor={'#7f8c8d'}
         />
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 const styles = StyleSheet.create({
@@ -42,7 +39,7 @@ const styles = StyleSheet.create({
   },
   detail: {
     position: 'absolute',
-    top: '78%',
+    top: '70%',
     left: 0,
     right: 0,
     bottom: 0,
@@ -62,7 +59,7 @@ const styles = StyleSheet.create({
   star: {
     left: '-2%',
     top: '2%',
-    marginHorizontal: 50,
+    width: 40,
   },
 });
 export default MovieHome;

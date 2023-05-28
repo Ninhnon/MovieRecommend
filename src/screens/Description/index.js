@@ -11,21 +11,22 @@ import StarRating from 'react-native-star-rating';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './style';
-import {IMG_ICON_PREVIOUS, IMV_captain} from '../../assets/images';
+import {IMG_ICON_PREVIOUS} from '../../assets/images';
 import RelateMovies from '../../components/Cards/RelateMovies';
-const Description = props => {
-  const {navigation} = props;
+import {useNavigation} from '@react-navigation/native';
+const Description = ({route}) => {
+  const {movie} = route.params;
   const [active, setActive] = useState(false);
-
+  const navigation = useNavigation();
   const handlePress = () => {
     setActive(!active);
   };
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground style={styles.imgBackground} source={IMV_captain}>
+      <ImageBackground style={styles.imgBackground} source={{uri: movie.image}}>
         <View style={styles.detail}>
-          <Text style={styles.name}>CAPTAIN MARVEL</Text>
-          <Text style={styles.label}>SuperHero</Text>
+          <Text style={styles.name}>{movie.title}</Text>
+          <Text style={styles.label}>{movie.genres}</Text>
           <StarRating
             disabled={false}
             maxStars={5}
@@ -33,8 +34,7 @@ const Description = props => {
             containerStyle={styles.star}
             starSize={20}
             selectedStar={rating => this.onStarRatingPress(rating)}
-            fullStarColor={'#f1c40f'}
-            emptyStarColor={'#7f8c8d'}
+            starStyle={{color: '#f1c40f'}}
           />
         </View>
       </ImageBackground>
@@ -50,12 +50,12 @@ const Description = props => {
           size={50}
         />
       </TouchableOpacity>
-      <RelateMovies
+      {/* <RelateMovies
         style={styles.relate}
         label="Relate Movies"
-        onPress={() => navigation.navigate('Description')}
+        onPress={() => navigation.navigate('MyTab')}
         onCatalogue={() => navigation.navigate('Catalogue')}
-      />
+      /> */}
     </SafeAreaView>
   );
 };

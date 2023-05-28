@@ -61,8 +61,9 @@ const LoginScreen = props => {
   const handleSubmitForm = async () => {
     try {
       //await auth().signInWithEmailAndPassword(inputs.Email, inputs.Password);
-      Alert.alert('Login successfully');
-      navigation.navigate('MyTab');
+      //Alert.alert('Login successfully');
+      navigation.navigate('Next');
+      console.log('gg');
     } catch (error) {
       Alert.alert('Failure');
     }
