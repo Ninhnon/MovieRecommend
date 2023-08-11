@@ -1,22 +1,16 @@
 import React from 'react';
 import StarRating from 'react-native-star-rating';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 const MovieHome = ({movie}) => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={{uri: movie.image}} style={styles.img} />
+      <ImageBackground source={{uri: movie.movieImage}} style={styles.img} />
       <View style={styles.detail}>
-        <Text style={styles.name}>{movie.title}</Text>
+        <Text style={styles.name}>{movie.movieTitle}</Text>
         <StarRating
           disabled={false}
           maxStars={5}
-          rating={3}
+          rating={Number(movie.mean_rating)}
           containerStyle={styles.star}
           starSize={10}
           selectedStar={rating => this.onStarRatingPress(rating)}

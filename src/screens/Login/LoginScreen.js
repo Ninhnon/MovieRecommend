@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
-  Image,
   ImageBackground,
   TouchableOpacity,
   Alert,
@@ -13,12 +11,17 @@ import {
 import styles from './style';
 import CustomButton from '../../components/CustomButton/index';
 import CustomInput from '../../components/CustomInput/index';
+import axios from 'axios';
+import {API_URL} from '../../constants/constant';
+import {saveUserLoginInfo} from '../../constants/AsyncStorage';
+import MovieContext from '../../data/MovieContext';
 let checkEmail = false;
 let checkName = false;
 let checkPassword1 = false;
 let checkPassword2 = false;
 const LoginScreen = props => {
   const {navigation} = props;
+  const {updateMovieList} = useContext(MovieContext);
   const [inputs, setInputs] = useState({
     Email: '',
     Password: '',
@@ -57,15 +60,48 @@ const LoginScreen = props => {
   const handleError = (error, input) => {
     setErrors(prevState => ({...prevState, [input]: error}));
   };
-
+  const predictOldUser = async userId => {
+    try {
+      const response = await axios.post(
+        API_URL + '/predict',
+        {
+          userId: userId,
+        },
+        {headers: {'Content-Type': 'application/json'}},
+      );
+      updateMovieList(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   const handleSubmitForm = async () => {
     try {
-      //await auth().signInWithEmailAndPassword(inputs.Email, inputs.Password);
-      //Alert.alert('Login successfully');
-      navigation.navigate('Next');
-      console.log('gg');
+      const response = await axios.get(API_URL + '/users');
+      const userList = response.data;
+
+      const user = userList.find(
+        user =>
+          user.email === inputs.Email && user.password === inputs.Password,
+      );
+
+      if (user) {
+        // Successful login
+        await saveUserLoginInfo(
+          user.email,
+          user.password,
+          user.userId,
+          user.username,
+        );
+
+        await predictOldUser(Number(user.userId));
+        Alert.alert('Login Success');
+        navigation.navigate('MyTab');
+      } else {
+        // Failed login
+        handleError('Invalid username or password', 'Password');
+      }
     } catch (error) {
-      Alert.alert('Failure');
+      console.error('Error fetching user list:', error);
     }
   };
 

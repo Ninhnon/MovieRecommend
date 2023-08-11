@@ -3,54 +3,36 @@ import {
   View,
   Text,
   FlatList,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import styles from './style';
 import HeaderHome from '../../components/Headers/HeaderHome';
 import Search from '../../components/Cards/Search';
 import React, {useState, useEffect} from 'react';
-import {initData} from '../../data/dataservice';
-import {Movie} from '../../models/movie';
 import {useNavigation} from '@react-navigation/native';
 import MovieHome from '../../components/Cards/MovieHome';
 import axios from 'axios';
 import MovieContext from '../../data/MovieContext';
-import {MovieProvider} from '../../data/MovieContext';
-const URL = 'https://web-movies-api-azurewebsites.net/';
-
+import {API_URL} from '../../constants/constant';
+// const URL = 'https://web-movies-api-azurewebsites.net/';
 const Home = () => {
   const navigation = useNavigation();
-  useEffect(() => {
-    const loadMovies = async () => {
-      const data = await initData();
-      const movieObjects = data.map(
-        movieData =>
-          new Movie(
-            movieData.movieId,
-            movieData.title,
-            movieData.genres,
-            movieData.image,
-          ),
-      );
-      setMovies(movieObjects);
-      setFilterMovies(movieObjects);
-    };
-    loadMovies();
-  }, []);
-  const predictNewUser = async genres => {
-    try {
-      const response = await axios.post(
-        'https://web-movie-api.azurewebsites.net/predict_new_user',
-        {
-          genres: genres,
-        },
-        {headers: {'Content-Type': 'application/json'}},
-      );
-      setFilterMovies(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
+  // const predictNewUser = async genres => {
+  //   try {
+  //     const response = await axios.post(
+  //       'https://web-movie-api.azurewebsites.net/predict_new_user',
+  //       {
+  //         genres: genres,
+  //       },
+  //       {headers: {'Content-Type': 'application/json'}},
+  //     );
+  //     setFilterMovies(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const categories = [
     {id: 0, name: 'Drama'},
@@ -85,15 +67,38 @@ const Home = () => {
   const [filterMovies, setFilterMovies] = useState([]);
   const {recommendMovies} = React.useContext(MovieContext);
   const [selectedValue, setSelectedValue] = useState(categories[0]);
-  const getMoviesByCategory = category => {
-    return movies.filter(movie => {
-      return movie.genre.toLowerCase().includes(category.name.toLowerCase());
-    });
-  };
-  const handleSelectCategory = category => {
+  useEffect(() => {
+    axios
+      .get(API_URL + '/movies/Drama')
+      .then(response => {
+        setMovies(response.data);
+        setFilterMovies(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching movies:', error);
+      });
+  }, []);
+  // const getMoviesByCategory = category => {
+  //   return movies.filter(movie => {
+  //     return movie.movieGenre
+  //       .toLowerCase()
+  //       .includes(category.name.toLowerCase());
+  //   });
+  // };
+  // const handleSelectCategory = category => {
+  //   setSelectedValue(category);
+  //   const moviesByCategory = getMoviesByCategory(category);
+  //   setFilterMovies(moviesByCategory);
+  // };
+  const handleSelectCategory = async category => {
     setSelectedValue(category);
-    const moviesByCategory = getMoviesByCategory(category);
-    setFilterMovies(moviesByCategory);
+
+    try {
+      const response = await axios.get(API_URL + `/movies/${category.name}`);
+      setFilterMovies(response.data);
+    } catch (error) {
+      console.error('Error fetching movies by category:', error);
+    }
   };
   return (
     <SafeAreaView style={styles.container}>
@@ -139,7 +144,7 @@ const Home = () => {
         </View>
         <FlatList
           horizontal
-          data={filterMovies}
+          data={filterMovies.slice(0, 6)}
           renderItem={renderItem}
           keyExtractor={item => item.movieId}
         />
@@ -150,7 +155,7 @@ const Home = () => {
         </View>
         <FlatList
           horizontal
-          data={recommendMovies}
+          data={recommendMovies.slice(0, 6)}
           renderItem={renderItem}
           keyExtractor={item => item.movieId}
         />
