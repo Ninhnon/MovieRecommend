@@ -71,7 +71,7 @@ const LoginScreen = props => {
       );
       updateMovieList(response.data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
   const handleSubmitForm = async () => {
@@ -101,7 +101,7 @@ const LoginScreen = props => {
         handleError('Invalid username or password', 'Password');
       }
     } catch (error) {
-      console.error('Error fetching user list:', error);
+      console.log('Error fetching user list:', error);
     }
   };
 

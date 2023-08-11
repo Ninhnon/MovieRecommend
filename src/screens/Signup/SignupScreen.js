@@ -76,7 +76,7 @@ const SignupScreen = props => {
       Alert.alert('Login successfully');
       navigation.navigate('New');
     } catch (error) {
-      console.error(error);
+      console.log(error);
       Alert.alert('Failure');
     }
   };

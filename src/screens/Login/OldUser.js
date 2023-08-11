@@ -36,7 +36,7 @@ const OldUser = ({navigation}) => {
       );
       updateMovieList(response.data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
@@ -50,7 +50,7 @@ const OldUser = ({navigation}) => {
       await predictOldUser(Number(user.userId));
       navigation.navigate('MyTab');
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 

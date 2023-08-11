@@ -49,7 +49,7 @@ const NewUser = ({navigation}) => {
       );
       updateMovieList(response.data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
   const handleSubmit = async () => {
@@ -59,7 +59,7 @@ const NewUser = ({navigation}) => {
       console.log(formattedString);
       navigation.navigate('MyTab');
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
