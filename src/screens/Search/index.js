@@ -26,7 +26,7 @@ const SearchScreen = () => {
         setMovies(response.data);
       })
       .catch(error => {
-        console.error('Error fetching movies:', error);
+        console.log('Error fetching movies:', error);
       });
   }, []);
   const filteredMovies = movies.filter(movies => {

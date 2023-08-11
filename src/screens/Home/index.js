@@ -75,7 +75,7 @@ const Home = () => {
         setFilterMovies(response.data);
       })
       .catch(error => {
-        console.error('Error fetching movies:', error);
+        console.log('Error fetching movies:', error);
       });
   }, []);
   // const getMoviesByCategory = category => {
@@ -97,7 +97,7 @@ const Home = () => {
       const response = await axios.get(API_URL + `/movies/${category.name}`);
       setFilterMovies(response.data);
     } catch (error) {
-      console.error('Error fetching movies by category:', error);
+      console.log('Error fetching movies by category:', error);
     }
   };
   return (
