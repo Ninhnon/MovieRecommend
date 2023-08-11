@@ -10,6 +10,14 @@ import CUSTOM_COLOR from '../.././constants/colors.js';
 import MovieHome from './MovieHome.js';
 import {IMV_captain} from '../../assets/images/index.js';
 const RelateMovies = props => {
+  const movie = {
+    mean_rating: '3.9',
+    movieGenre: 'Adventure|Animation|Children|Comedy|Fantasy',
+    movieId: 1,
+    movieImage:
+      'https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_SX300.jpg',
+    movieTitle: 'Toy Story (1995)',
+  };
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
@@ -19,21 +27,9 @@ const RelateMovies = props => {
         </TouchableOpacity>
       </View>
       <ScrollView horizontal={true}>
-        <MovieHome
-          source={IMV_captain}
-          name="CAPTAIN MaRVEL"
-          onPress={props.onPress}
-        />
-        <MovieHome
-          source={IMV_captain}
-          name="CAPTAIN MaRVEL"
-          onPress={props.onPress}
-        />
-        <MovieHome
-          source={IMV_captain}
-          name="CAPTAIN MaRVEL"
-          onPress={props.onPress}
-        />
+        <MovieHome movie={movie} />
+        <MovieHome movie={movie} />
+        <MovieHome movie={movie} />
       </ScrollView>
     </View>
   );

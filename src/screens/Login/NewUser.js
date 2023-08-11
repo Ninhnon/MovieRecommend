@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import MovieContext from '../../data/MovieContext';
 import axios from 'axios';
+import {API_URL} from '../../constants/constant';
 const NewUser = ({navigation}) => {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const {updateMovieList} = useContext(MovieContext);
@@ -40,7 +41,7 @@ const NewUser = ({navigation}) => {
   const predictNewUser = async genres => {
     try {
       const response = await axios.post(
-        'https://web-movie-api.azurewebsites.net/predict_new_user',
+        API_URL + '/predict_new_user',
         {
           genres: genres,
         },

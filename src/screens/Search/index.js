@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {initData} from '../../data/dataservice';
-import {Movie} from '../../models/movie';
+import axios from 'axios';
+import {API_URL} from '../../constants/constant';
 import styles from './style';
 import {IMG_Icon} from '../.././assets/images/index.js';
 import {useNavigation} from '@react-navigation/native';
@@ -20,23 +20,17 @@ const SearchScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const loadMovies = async () => {
-      const data = await initData();
-      const movieObjects = data.map(
-        movieData =>
-          new Movie(
-            movieData.movieId,
-            movieData.title,
-            movieData.genres,
-            movieData.image,
-          ),
-      );
-      setMovies(movieObjects);
-    };
-    loadMovies();
+    axios
+      .get(API_URL + '/movies')
+      .then(response => {
+        setMovies(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching movies:', error);
+      });
   }, []);
   const filteredMovies = movies.filter(movies => {
-    return movies.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return movies.movieTitle.toLowerCase().includes(searchQuery.toLowerCase());
   });
   const searchMovies = query => {
     // Gọi API tìm kiếm ở đây và cập nhật kết quả tìm kiếm

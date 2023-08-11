@@ -8,11 +8,10 @@ import {
   Text,
 } from 'react-native';
 import StarRating from 'react-native-star-rating';
-
+import RelateMovies from '../../components/Cards/RelateMovies';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './style';
 import {IMG_ICON_PREVIOUS} from '../../assets/images';
-import RelateMovies from '../../components/Cards/RelateMovies';
 import {useNavigation} from '@react-navigation/native';
 const Description = ({route}) => {
   const {movie} = route.params;
@@ -23,14 +22,16 @@ const Description = ({route}) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground style={styles.imgBackground} source={{uri: movie.image}}>
+      <ImageBackground
+        style={styles.imgBackground}
+        source={{uri: movie.movieImage}}>
         <View style={styles.detail}>
-          <Text style={styles.name}>{movie.title}</Text>
-          <Text style={styles.label}>{movie.genres}</Text>
+          <Text style={styles.name}>{movie.movieTitle}</Text>
+          <Text style={styles.label}>{movie.movieGenre}</Text>
           <StarRating
             disabled={false}
             maxStars={5}
-            rating={3}
+            rating={Number(movie.mean_rating)}
             containerStyle={styles.star}
             starSize={20}
             selectedStar={rating => this.onStarRatingPress(rating)}
@@ -50,12 +51,12 @@ const Description = ({route}) => {
           size={50}
         />
       </TouchableOpacity>
-      {/* <RelateMovies
+      <RelateMovies
         style={styles.relate}
         label="Relate Movies"
         onPress={() => navigation.navigate('MyTab')}
         onCatalogue={() => navigation.navigate('Catalogue')}
-      /> */}
+      />
     </SafeAreaView>
   );
 };

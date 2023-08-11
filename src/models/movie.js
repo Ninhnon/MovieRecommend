@@ -1,8 +1,9 @@
 export class Movie {
-  constructor(movieId, title, genre, image) {
+  constructor(mean_rating, movieGenre, movieId, movieImage, movieTitle) {
+    this.mean_rating = mean_rating;
+    this.movieGenre = movieGenre;
     this.movieId = movieId;
-    this.title = title;
-    this.genre = genre;
-    this.image = image;
+    this.movieImage = movieImage;
+    this.movieTitle = movieTitle;
   }
 }

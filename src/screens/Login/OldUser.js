@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -8,16 +8,27 @@ import {
 } from 'react-native';
 import MovieContext from '../../data/MovieContext';
 import axios from 'axios';
-import CUSTOM_COLOR from '../../constants/colors';
+import {API_URL} from '../../constants/constant';
+import {getUserLoginInfo} from '../../constants/AsyncStorage';
 
 const OldUser = ({navigation}) => {
   const [text, setText] = useState('');
   const {updateMovieList} = useContext(MovieContext);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const userData = await getUserLoginInfo();
+      setUser(userData);
+    };
+
+    fetchUser();
+  }, []);
 
   const predictOldUser = async userId => {
     try {
       const response = await axios.post(
-        'https://web-movie-api.azurewebsites.net/predict',
+        API_URL + '/predict',
         {
           userId: userId,
         },
@@ -36,7 +47,7 @@ const OldUser = ({navigation}) => {
   const handleSubmit = async () => {
     try {
       console.log(text);
-      await predictOldUser(Number(text));
+      await predictOldUser(Number(user.userId));
       navigation.navigate('MyTab');
     } catch (error) {
       console.error(error);
@@ -45,13 +56,18 @@ const OldUser = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
+      {/* <TextInput
         placeholder="Put your id"
         placeholderTextColor={CUSTOM_COLOR.Red}
         value={text}
         textAlign="center"
         onChangeText={handleInputChange}
-      />
+      /> */}
+      {user ? (
+        <Text>Welcome, {user.userId}</Text>
+      ) : (
+        <Text>Loading user information...</Text>
+      )}
       <TouchableOpacity onPress={handleSubmit}>
         <Text>Login</Text>
       </TouchableOpacity>

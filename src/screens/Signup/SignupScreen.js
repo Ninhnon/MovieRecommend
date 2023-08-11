@@ -13,6 +13,8 @@ import {
 import styles from './style';
 import CustomButton from '../../components/CustomButton/index';
 import CustomInput from '../../components/CustomInput/index';
+import axios from 'axios';
+import {API_URL} from '../../constants/constant';
 let checkEmail = false;
 let checkName = false;
 let checkPassword1 = false;
@@ -20,6 +22,7 @@ let checkPassword2 = false;
 const SignupScreen = props => {
   const {navigation} = props;
   const [inputs, setInputs] = useState({
+    Name: '',
     Email: '',
     Password: '',
   });
@@ -60,10 +63,20 @@ const SignupScreen = props => {
 
   const handleSubmitForm = async () => {
     try {
-      //await auth().signInWithEmailAndPassword(inputs.Email, inputs.Password);
+      const response = await axios.post(
+        API_URL + '/users',
+        {
+          username: inputs.Name,
+          email: inputs.Email,
+          password: inputs.Password,
+        },
+        {headers: {'Content-Type': 'application/json'}},
+      );
+
       Alert.alert('Login successfully');
-      //navigation.navigate('MyTab');
+      navigation.navigate('New');
     } catch (error) {
+      console.error(error);
       Alert.alert('Failure');
     }
   };
@@ -134,16 +147,9 @@ const SignupScreen = props => {
           <TouchableOpacity
             style={styles.ButtonLogin}
             onPress={() => {
-              // navigation.goBack();
-              console.log(
-                'hi: ',
-                checkEmail,
-                checkName,
-                checkPassword1,
-                checkPassword2,
-              );
+              navigation.goBack();
             }}>
-            <Text style={styles.textLogin}>Log in</Text>
+            <Text style={{color: '#FFF'}}>Log in</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
