@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -12,16 +12,16 @@ import styles from './style';
 import CustomButton from '../../components/CustomButton/index';
 import CustomInput from '../../components/CustomInput/index';
 import axios from 'axios';
-import {API_URL} from '../../constants/constant';
-import {saveUserLoginInfo} from '../../constants/AsyncStorage';
+import { API_URL } from '../../constants/constant';
+import { saveUserLoginInfo } from '../../constants/AsyncStorage';
 import MovieContext from '../../data/MovieContext';
 let checkEmail = false;
 let checkName = false;
 let checkPassword1 = false;
 let checkPassword2 = false;
 const LoginScreen = props => {
-  const {navigation} = props;
-  const {updateMovieList} = useContext(MovieContext);
+  const { navigation } = props;
+  const { updateMovieList } = useContext(MovieContext);
   const [inputs, setInputs] = useState({
     Email: '',
     Password: '',
@@ -55,10 +55,10 @@ const LoginScreen = props => {
     }
   };
   const handleOnchange = (text, input) => {
-    setInputs(prevState => ({...prevState, [input]: text}));
+    setInputs(prevState => ({ ...prevState, [input]: text }));
   };
   const handleError = (error, input) => {
-    setErrors(prevState => ({...prevState, [input]: error}));
+    setErrors(prevState => ({ ...prevState, [input]: error }));
   };
   const predictOldUser = async userId => {
     try {
@@ -75,6 +75,8 @@ const LoginScreen = props => {
     }
   };
   const handleSubmitForm = async () => {
+    console.log('Login');
+    console.log('Login');
     try {
       const response = await axios.get(API_URL + '/users');
       const userList = response.data;
@@ -108,7 +110,7 @@ const LoginScreen = props => {
   const handleForgetPasswordClick = async () => {
     try {
       if (inputs.Email === '') {
-        throw {code: 'empty-email'};
+        throw { code: 'empty-email' };
       }
       // await auth().sendPasswordResetEmail(inputs.Email);
       Alert.alert(
