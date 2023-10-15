@@ -1,16 +1,15 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {IC_Profile} from '../../assets/icons';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import CUSTOM_COLOR from '../../constants/colors';
 import FONT_FAMILY from '../../constants/fonts';
 const ProfileCard = props => {
   return (
-    <View style={styles.profileBar}>
+    <TouchableOpacity style={styles.profileBar} onPress={props.onPress}>
       <View style={styles.iconContainer}>
         <Image source={props.icon} style={styles.icon} />
       </View>
       <Text style={styles.content}>{props.title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 const styles = StyleSheet.create({

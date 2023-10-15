@@ -18,21 +18,6 @@ import {API_URL} from '../../constants/constant';
 const Home = () => {
   const navigation = useNavigation();
 
-  // const predictNewUser = async genres => {
-  //   try {
-  //     const response = await axios.post(
-  //       'https://web-movie-api.azurewebsites.net/predict_new_user',
-  //       {
-  //         genres: genres,
-  //       },
-  //       {headers: {'Content-Type': 'application/json'}},
-  //     );
-  //     setFilterMovies(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   const categories = [
     {id: 0, name: 'Drama'},
     {id: 1, name: 'Action'},
@@ -62,7 +47,7 @@ const Home = () => {
       <MovieHome movie={item} />
     </TouchableOpacity>
   );
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
   const [filterMovies, setFilterMovies] = useState([]);
   const {recommendMovies} = React.useContext(MovieContext);
   const [selectedValue, setSelectedValue] = useState(categories[0]);
@@ -70,7 +55,7 @@ const Home = () => {
     axios
       .get(API_URL + '/movies/Drama')
       .then(response => {
-        setMovies(response.data);
+        // setMovies(response.data);
         setFilterMovies(response.data);
       })
       .catch(error => {
