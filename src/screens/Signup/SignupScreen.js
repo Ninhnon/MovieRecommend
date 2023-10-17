@@ -73,7 +73,7 @@ const SignupScreen = props => {
         {headers: {'Content-Type': 'application/json'}},
       );
 
-      Alert.alert('Login successfully');
+      // Alert.alert('Login successfully');
       navigation.navigate('New');
     } catch (error) {
       console.log(error);
