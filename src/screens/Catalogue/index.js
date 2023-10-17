@@ -37,6 +37,7 @@ const Catalogue = ({route}) => {
         genre={item.movieGenre}
         isPrimary={true}
         isFavorite={false}
+        movieId={item.movieId}
       />
     </TouchableOpacity>
   );

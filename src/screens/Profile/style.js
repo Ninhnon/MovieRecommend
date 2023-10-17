@@ -13,10 +13,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageContainer: {
-    width: 122,
+    height: 100,
+    width: 100,
     aspectRatio: 1,
     backgroundColor: CUSTOM_COLOR.White,
-    borderRadius: 55,
+    borderRadius: 50,
     overflow: 'hidden',
   },
   image: {

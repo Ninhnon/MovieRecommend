@@ -26,10 +26,10 @@ const Profile = ({navigation}) => {
           <Image source={IMG_AVATAR_PROFILE} style={styles.image} />
         </View>
         <Text style={styles.nameProfile} numberOfLines={1}>
-          {/* user ? {user.username} : 'User' */}u
+          {user ? user.username : 'User'}
         </Text>
         <Text style={styles.accountProfile} numberOfLines={1}>
-          {/* user ? {user.email} : 'demo@gmail.com' */}u
+          {user ? user.email : 'demo@gmail.com'}
         </Text>
       </View>
       <View style={styles.listProfileBar}>

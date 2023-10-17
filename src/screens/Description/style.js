@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   star: {
+    color: CUSTOM_COLOR.Yellow,
     left: '-2%',
     top: '2%',
     marginHorizontal: 50,

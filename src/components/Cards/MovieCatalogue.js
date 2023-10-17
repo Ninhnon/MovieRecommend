@@ -9,6 +9,7 @@ const MovieCatalogue = props => {
   const {navigation} = props;
   const favoriteStatus =
     props.props.isFavorited === true ? IC_Favorite : IC_UnFavorite;
+  const movieId = props.props.movieId;
   return (
     <View style={styles.movie}>
       <View style={styles.imageContainer}>

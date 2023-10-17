@@ -1,32 +1,31 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, TouchableOpacity, FlatList, Button} from 'react-native';
+import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
 import styles from './style';
 import MovieCatalogue from '../../components/Cards/MovieCatalogue';
 import HeaderWithoutBack from '../../components/Headers/HeaderWithoutBack';
 import {API_URL} from '../../constants/constant';
 import axios from 'axios';
 import {getUserLoginInfo} from '../../constants/AsyncStorage';
+import {useNavigation} from '@react-navigation/native';
 const Favorite = () => {
+  const navigation = useNavigation();
   const [user, setUser] = useState(null);
   const [movies, setMovies] = useState([]);
-  const renderItem = ({item}) => (
-    <TouchableOpacity
-      // onPress={() => navigation.navigate('Description', {movie: item})}>
-      onPress={() => {
-        console.log('movies: ', movies);
-      }}>
-      <MovieCatalogue props={item} />
-    </TouchableOpacity>
-  );
+  const renderItem = ({item}) => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Description', {movie: item})}>
+        <MovieCatalogue props={item} />
+      </TouchableOpacity>
+    );
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
         const userData = await getUserLoginInfo();
         setUser(userData);
-
-        if (userData.isFavorited) {
+        if (userData) {
           const userId = userData.userId ? userData.userId.toString() : '1';
-          console.log('userId', userId);
 
           // Fetch user data along with isFavorited and isWatched information
           const userMovieList = await axios.get(
@@ -40,6 +39,8 @@ const Favorite = () => {
           // Process and set the filtered movies in the state
           const moviesWithDetails = filteredMovies.map(movie => {
             return {
+              movieId:
+                movie.movie && movie.movie.movieId ? movie.movie.movieId : 1,
               movieImage:
                 movie.movie && movie.movie.movieImage
                   ? movie.movie.movieImage
