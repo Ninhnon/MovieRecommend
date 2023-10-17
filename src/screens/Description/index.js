@@ -119,6 +119,7 @@ const Description = ({route}) => {
             containerStyle={styles.star}
             starSize={20}
             selectedStar={rating => this.onStarRatingPress(rating)}
+            fullStarColor={'red'}
           />
         </View>
       </ImageBackground>

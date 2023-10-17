@@ -31,14 +31,7 @@ const Catalogue = ({route}) => {
   const renderItem = ({item}) => (
     <TouchableOpacity
       onPress={() => navigation.navigate('Description', {movie: item})}>
-      <MovieCatalogue
-        imageMovie={{uri: item.movieImage}}
-        title={item.movieTitle}
-        genre={item.movieGenre}
-        isPrimary={true}
-        isFavorite={false}
-        movieId={item.movieId}
-      />
+      <MovieCatalogue props={item} />
     </TouchableOpacity>
   );
   return (

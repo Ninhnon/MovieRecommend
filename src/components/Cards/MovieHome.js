@@ -14,6 +14,7 @@ const MovieHome = ({movie}) => {
           containerStyle={styles.star}
           starSize={10}
           selectedStar={rating => this.onStarRatingPress(rating)}
+          fullStarColor={'red'}
         />
       </View>
     </View>
