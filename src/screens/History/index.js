@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, TouchableOpacity, FlatList } from 'react-native';
 import styles from './style';
 import MovieCatalogue from '../../components/Cards/MovieCatalogue';
 import HeaderWithoutBack from '../../components/Headers/HeaderWithoutBack';
-import {API_URL} from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 import axios from 'axios';
-import {getUserLoginInfo} from '../../constants/AsyncStorage';
-import {useNavigation} from '@react-navigation/native';
+import { getUserLoginInfo } from '../../constants/AsyncStorage';
+import { useNavigation } from '@react-navigation/native';
 const History = () => {
   const [user, setUser] = useState(null);
   const navigation = useNavigation();
   const [movies, setMovies] = useState([]);
-  const renderItem = ({item}) => (
+  const renderItem = ({ item }) => (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Description', {movie: item})}>
+      onPress={() => navigation.navigate('Description', { movie: item })}>
       <MovieCatalogue props={item} />
     </TouchableOpacity>
   );
@@ -60,7 +60,7 @@ const History = () => {
           setMovies(moviesWithDetails);
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.log('Error fetching data:', error);
       }
     };
 

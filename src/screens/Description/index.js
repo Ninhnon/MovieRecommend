@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ImageBackground,
   SafeAreaView,
@@ -12,13 +12,13 @@ import StarRating from 'react-native-star-rating';
 import RelateMovies from '../../components/Cards/RelateMovies';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './style';
-import {IMG_ICON_PREVIOUS} from '../../assets/images';
-import {useNavigation} from '@react-navigation/native';
-import {getUserLoginInfo} from '../../constants/AsyncStorage';
-import {API_URL} from '../../constants/constant';
+import { IMG_ICON_PREVIOUS } from '../../assets/images';
+import { useNavigation } from '@react-navigation/native';
+import { getUserLoginInfo } from '../../constants/AsyncStorage';
+import { API_URL } from '../../constants/constant';
 import axios from 'axios';
-const Description = ({route}) => {
-  const {movie} = route.params;
+const Description = ({ route }) => {
+  const { movie } = route.params;
 
   const [user, setUser] = useState(null);
   const [movieInfo, setMovieInfo] = useState(null);
@@ -43,7 +43,7 @@ const Description = ({route}) => {
           setLoading(false);
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.log('Error fetching data:', error);
         setLoading(false);
       }
     };
@@ -65,7 +65,7 @@ const Description = ({route}) => {
           {
             isFavorited: !movieInfo.isFavorited,
           },
-          {headers: {'Content-Type': 'application/json'}},
+          { headers: { 'Content-Type': 'application/json' } },
         );
         console.log(response.data);
       } else {
@@ -76,7 +76,7 @@ const Description = ({route}) => {
             isFavorited: true,
             isWatched: false,
           },
-          {headers: {'Content-Type': 'application/json'}},
+          { headers: { 'Content-Type': 'application/json' } },
         );
         console.log(response.data);
       }
@@ -108,7 +108,7 @@ const Description = ({route}) => {
     <SafeAreaView style={styles.container}>
       <ImageBackground
         style={styles.imgBackground}
-        source={{uri: movie.movieImage}}>
+        source={{ uri: movie.movieImage }}>
         <View style={styles.detail}>
           <Text style={styles.name}>{movie.movieTitle}</Text>
           <Text style={styles.label}>{movie.movieGenre}</Text>

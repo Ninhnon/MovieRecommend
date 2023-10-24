@@ -62,13 +62,17 @@ const SearchScreen = () => {
         </View>
         <Image source={IMG_Icon} style={styles.image} />
       </View>
-      <FlatList
-        data={searchResults}
-        numColumns={2}
-        renderItem={renderItem}
-        keyExtractor={item => item.movieId}
-        contentContainerStyle={styles.list}
-      />
+      <ScrollView horizontal={true} style={{flex: 1, width: '80%'}}>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <FlatList
+            data={searchResults}
+            numColumns={2}
+            renderItem={renderItem}
+            keyExtractor={item => item.movieId}
+            contentContainerStyle={{alignItems: 'center'}}
+          />
+        </View>
+      </ScrollView>
     </ScrollView>
   );
 };
