@@ -1,6 +1,3 @@
-export const API_URL = 'http://10.0.2.2:8000';
-// export const API_URL = 'https://vu-ninh.azurewebsites.net';
-// export const API_URL = 'http://10.45.19.99:8000';
 export const CATEGORIES = [
   {id: 0, name: 'Drama'},
   {id: 1, name: 'Action'},
@@ -23,3 +20,8 @@ export const CATEGORIES = [
   {id: 18, name: 'Sci-fi'},
   {id: 19, name: 'IMAX'},
 ];
+
+// export const API_URL = 'http://10.0.2.2:8000';
+// export const API_URL = 'http://10.45.19.99:8000';
+export const API_URL = 'https://vu-ninh.azurewebsites.net';
+
