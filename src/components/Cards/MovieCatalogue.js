@@ -8,25 +8,30 @@ import CUSTOM_COLOR from '../../constants/colors';
 const MovieCatalogue = props => {
   const {navigation} = props;
   const favoriteStatus =
-    props.isFavorite === true ? IC_Favorite : IC_UnFavorite;
+    props.props.isFavorited === true ? IC_Favorite : IC_UnFavorite;
+  const movieId = props.props.movieId;
   return (
     <View style={styles.movie}>
       <View style={styles.imageContainer}>
-        <Image source={props.imageMovie} style={styles.image} />
+        <Image
+          source={{
+            uri: props.props.movieImage,
+          }}
+          style={styles.image}
+        />
       </View>
       <View style={styles.description}>
         <Text style={styles.titleMovie} numberOfLines={2}>
-          {props.title}
+          {props.props.movieTitle}
         </Text>
         <Text style={styles.genreMovie} numberOfLines={1}>
-          {props.genre}
+          {props.props.movieGenres}
         </Text>
         <View style={styles.buttonContainer}>
           <SecondaryButton
             label="Watch Now"
             onPress={() => navigation.navigate('Description')}
             alert="Hello"
-            isPrimary={props.isPrimary}
           />
         </View>
         <View style={styles.iconOptionContainer}>

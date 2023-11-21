@@ -3,7 +3,6 @@ import {
   View,
   Text,
   FlatList,
-  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import styles from './style';
@@ -15,47 +14,10 @@ import MovieHome from '../../components/Cards/MovieHome';
 import axios from 'axios';
 import MovieContext from '../../data/MovieContext';
 import {API_URL} from '../../constants/constant';
+import {CATEGORIES} from '../../constants/constant';
 // const URL = 'https://web-movies-api-azurewebsites.net/';
 const Home = () => {
   const navigation = useNavigation();
-
-  // const predictNewUser = async genres => {
-  //   try {
-  //     const response = await axios.post(
-  //       'https://web-movie-api.azurewebsites.net/predict_new_user',
-  //       {
-  //         genres: genres,
-  //       },
-  //       {headers: {'Content-Type': 'application/json'}},
-  //     );
-  //     setFilterMovies(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  const categories = [
-    {id: 0, name: 'Drama'},
-    {id: 1, name: 'Action'},
-    {id: 2, name: 'Adventure'},
-    {id: 3, name: 'Fantasy'},
-    {id: 4, name: 'Musical'},
-    {id: 5, name: 'Comedy'},
-    {id: 6, name: 'Crime'},
-    {id: 7, name: '(no genres listed)'},
-    {id: 8, name: 'Film-Noir'},
-    {id: 9, name: 'Animation'},
-    {id: 10, name: 'Thriller'},
-    {id: 11, name: 'Western'},
-    {id: 12, name: 'War'},
-    {id: 13, name: 'Mystery'},
-    {id: 14, name: 'Horror'},
-    {id: 15, name: 'Children'},
-    {id: 16, name: 'Documentary'},
-    {id: 17, name: 'Romance'},
-    {id: 18, name: 'Sci-Fi'},
-    {id: 19, name: 'IMAX'},
-  ];
 
   const renderItem = ({item}) => (
     <TouchableOpacity
@@ -63,15 +25,15 @@ const Home = () => {
       <MovieHome movie={item} />
     </TouchableOpacity>
   );
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
   const [filterMovies, setFilterMovies] = useState([]);
   const {recommendMovies} = React.useContext(MovieContext);
-  const [selectedValue, setSelectedValue] = useState(categories[0]);
+  const [selectedValue, setSelectedValue] = useState(CATEGORIES[0]);
   useEffect(() => {
     axios
       .get(API_URL + '/movies/Drama')
       .then(response => {
-        setMovies(response.data);
+        // setMovies(response.data);
         setFilterMovies(response.data);
       })
       .catch(error => {
@@ -107,7 +69,7 @@ const Home = () => {
       <Text style={styles.genres}>Genres:</Text>
       <View style={{height: 50}}>
         <FlatList
-          data={categories}
+          data={CATEGORIES}
           renderItem={({item}) => (
             <TouchableOpacity onPress={() => handleSelectCategory(item)}>
               <View

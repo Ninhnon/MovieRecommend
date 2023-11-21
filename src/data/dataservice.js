@@ -21,7 +21,7 @@ export const initData = async () => {
     await AsyncStorage.setItem(DATA_KEY, JSON.stringify(objects));
     return objects;
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return [];
   }
 };

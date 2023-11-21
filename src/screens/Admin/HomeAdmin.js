@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Text,
 } from 'react-native';
 import axios from 'axios';
 import {API_URL} from '../../constants/constant';
@@ -13,7 +14,7 @@ import styles from './style';
 import {IMG_Icon} from '../.././assets/images/index.js';
 import {useNavigation} from '@react-navigation/native';
 import MovieHome from '../../components/Cards/MovieHome';
-const SearchScreen = () => {
+const HomeAdmin = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [movies, setMovies] = useState([]);
@@ -33,6 +34,12 @@ const SearchScreen = () => {
     return movies.movieTitle.toLowerCase().includes(searchQuery.toLowerCase());
   });
   const searchMovies = query => {
+    console.log('🚀 ~ file: HomeAdmin.js:21 ~ HomeAdmin ~ movies:', movies);
+    console.log(
+      '🚀 ~ file: HomeAdmin.js:36 ~ filteredMovies ~ filteredMovies:',
+      filteredMovies,
+    );
+
     // Gọi API tìm kiếm ở đây và cập nhật kết quả tìm kiếm
     setSearchResults(filteredMovies);
   };
@@ -41,15 +48,19 @@ const SearchScreen = () => {
     setSearchQuery(text);
     searchMovies(text);
   };
+  const navigateToEdit = movie => {
+    navigation.navigate('AddEditMovieScreen', {
+      movieInfo: movie,
+    });
+  };
   const renderItem = ({item}) => (
-    <TouchableOpacity
-      onPress={() => navigation.navigate('Description', {movie: item})}>
+    <TouchableOpacity onPress={() => navigateToEdit(item)}>
       <MovieHome movie={item} />
       {/* onPress={() => alert((item))}> */}
     </TouchableOpacity>
   );
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.search}>
           <TextInput
@@ -73,8 +84,17 @@ const SearchScreen = () => {
           />
         </View>
       </ScrollView>
-    </ScrollView>
+      <TouchableOpacity
+        style={styles.bottomButton} // Define the style for your fixed button
+        onPress={() => {
+          // Define the action when the button is pressed
+          // For example, navigate to a different screen
+          navigation.navigate('AddEditMovieScreen');
+        }}>
+        <Text style={styles.buttonText}>+</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-export default SearchScreen;
+export default HomeAdmin;
