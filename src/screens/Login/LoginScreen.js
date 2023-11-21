@@ -76,32 +76,42 @@ const LoginScreen = props => {
   };
   const handleSubmitForm = async () => {
     console.log('Login');
-    try {
-      const response = await axios.get(API_URL + '/users');
-      const userList = response.data;
+    console.log(
+      '🚀 ~ file: LoginScreen.js:81 ~ handleSubmitForm ~ inputs:',
+      inputs,
+    );
 
-      const user = userList.find(
-        user =>
-          user.email === inputs.Email && user.password === inputs.Password,
-      );
+    if (inputs.Email === 'admin' && inputs.Password === '123') {
+      navigation.navigate('HomeAdmin');
+      console.log('admin');
+    } else {
+      try {
+        const response = await axios.get(API_URL + '/users');
+        const userList = response.data;
 
-      if (user) {
-        // Successful login
-        await saveUserLoginInfo(
-          user.email,
-          user.password,
-          user.userId,
-          user.username,
+        const user = userList.find(
+          user =>
+            user.email === inputs.Email && user.password === inputs.Password,
         );
 
-        await predictOldUser(Number(user.userId));
-        navigation.navigate('MyTab');
-      } else {
-        // Failed login
-        handleError('Invalid username or password', 'Password');
+        if (user) {
+          // Successful login
+          await saveUserLoginInfo(
+            user.email,
+            user.password,
+            user.userId,
+            user.username,
+          );
+
+          await predictOldUser(Number(user.userId));
+          navigation.navigate('MyTab');
+        } else {
+          // Failed login
+          handleError('Invalid username or password', 'Password');
+        }
+      } catch (error) {
+        console.log('Error fetching user list:', error);
       }
-    } catch (error) {
-      console.log('Error fetching user list:', error);
     }
   };
 

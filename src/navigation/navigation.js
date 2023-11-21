@@ -9,7 +9,8 @@ import Search from '../screens/Search';
 import Next from '../screens/Login/NextLogin';
 import Old from '../screens/Login/OldUser';
 import New from '../screens/Login/NewUser';
-
+import HomeAdmin from '../screens/Admin/HomeAdmin';
+import AddEditMovieScreen from '../screens/Admin/CreateAndEdit';
 const Stack = createNativeStackNavigator();
 function StackNavigator() {
   return (
@@ -24,6 +25,8 @@ function StackNavigator() {
       <Stack.Screen name="Next" component={Next} />
       <Stack.Screen name="Old" component={Old} />
       <Stack.Screen name="New" component={New} />
+      <Stack.Screen name="HomeAdmin" component={HomeAdmin} />
+      <Stack.Screen name="AddEditMovieScreen" component={AddEditMovieScreen} />
     </Stack.Navigator>
   );
 }

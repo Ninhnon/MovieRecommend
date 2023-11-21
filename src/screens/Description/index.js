@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ImageBackground,
   SafeAreaView,
@@ -12,13 +12,13 @@ import StarRating from 'react-native-star-rating';
 import RelateMovies from '../../components/Cards/RelateMovies';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './style';
-import { IMG_ICON_PREVIOUS } from '../../assets/images';
-import { useNavigation } from '@react-navigation/native';
-import { getUserLoginInfo } from '../../constants/AsyncStorage';
-import { API_URL } from '../../constants/constant';
+import {IMG_ICON_PREVIOUS} from '../../assets/images';
+import {useNavigation} from '@react-navigation/native';
+import {getUserLoginInfo} from '../../constants/AsyncStorage';
+import {API_URL} from '../../constants/constant';
 import axios from 'axios';
-const Description = ({ route }) => {
-  const { movie } = route.params;
+const Description = ({route}) => {
+  const {movie} = route.params;
 
   const [user, setUser] = useState(null);
   const [movieInfo, setMovieInfo] = useState(null);
@@ -56,50 +56,107 @@ const Description = ({ route }) => {
     }
   }, [movieInfo]);
 
+  // const changeFavorite = async () => {
+  //   try {
+  //     if (movieInfo) {
+  //       console.log('movieInfo.isFavorited', movieInfo.isFavorited);
+  //       const response = await axios.put(
+  //         API_URL + '/user_movies/' + user.userId + '/' + movieInfo.movieId,
+  //         {
+  //           isFavorited: !movieInfo.isFavorited,
+  //         },
+  //         {headers: {'Content-Type': 'application/json'}},
+  //       );
+  //       console.log(response.data);
+  //     } else {
+  //       const response = await axios.post(
+  //         API_URL + '/user_movies/' + user.userId,
+  //         {
+  //           movieId: movie.movieId,
+  //           isFavorited: true,
+  //           isWatched: false,
+  //         },
+  //         {headers: {'Content-Type': 'application/json'}},
+  //       );
+  //       console.log(response.data);
+  //     }
+
+  //     // Assuming the API response contains the updated movieInfo data,
+  //     // update the local state with the updated data.
+  //     setMovieInfo(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   const changeFavorite = async () => {
     try {
-      if (movieInfo) {
-        console.log('movieInfo.isFavorited', movieInfo.isFavorited);
-        const response = await axios.put(
-          API_URL + '/user_movies/' + user.userId + '/' + movieInfo.movieId,
-          {
-            isFavorited: !movieInfo.isFavorited,
-          },
-          { headers: { 'Content-Type': 'application/json' } },
-        );
-        console.log(response.data);
+      if (!movieInfo || !user) {
+        // If movieInfo or user is missing, create new entries
+        const response = await createNewUserMovie();
+        setMovieInfo(response.data); // Assuming response has updated movieInfo
       } else {
-        const response = await axios.post(
-          API_URL + '/user_movies/' + user.userId,
-          {
-            movieId: movie.movieId,
-            isFavorited: true,
-            isWatched: false,
-          },
-          { headers: { 'Content-Type': 'application/json' } },
-        );
-        console.log(response.data);
+        // Update favorite status based on current state
+        const response = await updateFavoriteStatus(!movieInfo.isFavorited);
+        setMovieInfo(response.data); // Assuming response has updated movieInfo
       }
-
-      // Assuming the API response contains the updated movieInfo data,
-      // update the local state with the updated data.
-      setMovieInfo(response.data);
     } catch (error) {
       console.log(error);
+    }
+  };
+  const createNewUserMovie = async () => {
+    try {
+      const response = await axios.post(
+        API_URL + '/user_movies',
+        {
+          userId: user.userId,
+          movieId: movie.movieId,
+          isFavorited: true,
+          isWatched: true,
+        },
+        {headers: {'Content-Type': 'application/json'}},
+      );
+      return response;
+    } catch (error) {
+      console.log('Error creating new user_movie entry:', error);
+      throw error;
+    }
+  };
+
+  const updateFavoriteStatus = async isFavorited => {
+    try {
+      const response = await axios.put(
+        API_URL + '/user_movies/' + user.userId + '/' + movieInfo.movieId,
+        {
+          isFavorited: isFavorited,
+        },
+        {headers: {'Content-Type': 'application/json'}},
+      );
+      return response;
+    } catch (error) {
+      console.log('Error updating favorite status:', error);
+      throw error;
     }
   };
 
   const handlePress = async () => {
     try {
       await changeFavorite();
-      setMovieInfo({
-        ...movieInfo,
-        isFavorited: !movieInfo.isFavorited,
-      });
     } catch (error) {
       console.log(error);
     }
   };
+  // const handlePress = async () => {
+  //   try {
+  //     await changeFavorite();
+  //     setMovieInfo({
+  //       ...movieInfo,
+  //       isFavorited: !movieInfo.isFavorited,
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   if (loading) {
     // Display a loading indicator while data is being fetched
     return <ActivityIndicator size="large" style={styles.loadingIndicator} />;
@@ -108,7 +165,7 @@ const Description = ({ route }) => {
     <SafeAreaView style={styles.container}>
       <ImageBackground
         style={styles.imgBackground}
-        source={{ uri: movie.movieImage }}>
+        source={{uri: movie.movieImage}}>
         <View style={styles.detail}>
           <Text style={styles.name}>{movie.movieTitle}</Text>
           <Text style={styles.label}>{movie.movieGenre}</Text>
