@@ -9,7 +9,7 @@
     <img src = "https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white">
 </a>
 
-Movie Recommend là ứng dụng đề xuất phim cho người dùng sử dụng hai phương pháp đề xuất nổi bật là LFCF-DL và Content-Based Filtering .
+Movie Recommend is a movie recommendation application using two recommendation models: LFCF-DL and Content-Based Filtering.
 
 <p align="center">
     <img src="https://forthebadge.com/images/badges/built-with-love.svg"/>
@@ -24,9 +24,9 @@ Movie Recommend là ứng dụng đề xuất phim cho người dùng sử dụn
 
 - Recommender systems, movie recommend, LFCF-DL, Content-Based filtering, MovieLens 100K 🤖
 
-## Tính năng 🦉
+## Fuction 🦉
 
-Chi tiết xem [tại đây](./BaoCao.pdf)
+Details see in [here](./BaoCao.pdf)
 
 ## Screenshots
 
@@ -53,9 +53,9 @@ Chi tiết xem [tại đây](./BaoCao.pdf)
     <img src="demo/Catalogue.png" width="30%"/>
 </p>
 
-## Hướng dẫn sử dụng ⚙️
+## Usage guidelines ⚙️
 
-### `1. Hướng dẫn khởi chạy dự án react-native`
+### `1. Init react-native project`
 
 #### Getting Started
 
@@ -135,22 +135,22 @@ To learn more about React Native, take a look at the following resources:
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 
-### `2. Tải dự án về máy`
+### `2. Clone Project`
 
-- Cách Clone về với git:
+- Clone with git:
 
   ```sh
   git clone https://github.com/Ninhnon/MovieRecommend.git
   ```
 
-- Cài đặt các packages cần thiết:
+- Install necessary packages:
 
   ```sh
   # using npm
   npm i
   ```
 
-### `3. Khởi chạy dự án`
+### `3. Run Project`
 
 #### For Android
 
@@ -175,6 +175,6 @@ npm run ios
 yarn ios
 ```
 
-## Link ứng dụng trên nền tảng Google Play ✨
+## Link application to Google Play ✨
 
 https://bit.ly/MovieRecommendUIT
