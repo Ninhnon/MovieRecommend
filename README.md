@@ -50,7 +50,7 @@ Chi tiết xem [tại đây](./BaoCao.pdf)
 <p align="center">
     <img src="demo/Favorite.png" width="30%"/>
     <img src="demo/Watched.png" width="30%"/>
-    <img src="demo/Catalouge.png" width="30%"/>
+    <img src="demo/Catalogue.png" width="30%"/>
 </p>
 
 ## Hướng dẫn sử dụng ⚙️
