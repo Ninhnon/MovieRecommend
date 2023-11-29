@@ -39,7 +39,11 @@ const Profile = ({navigation}) => {
           title="History"
           onPress={() => navigation.navigate('History')}
         />
-        <ProfileCard icon={IC_Logout} title="Logout" />
+        <ProfileCard
+          icon={IC_Logout}
+          title="Logout"
+          onPress={() => navigation.navigate('Login')}
+        />
       </View>
     </SafeAreaView>
   );

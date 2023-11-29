@@ -170,7 +170,7 @@ const Description = ({route}) => {
           <Text style={styles.name}>{movie.movieTitle}</Text>
           <Text style={styles.label}>{movie.movieGenre}</Text>
           <StarRating
-            disabled={false}
+            disabled={true}
             maxStars={5}
             rating={Number(movie.mean_rating)}
             containerStyle={styles.star}
