@@ -186,6 +186,7 @@ const AddEditMovieScreen = ({navigation, route}) => {
       <TextInput
         style={styles.input}
         placeholder="Enter movie title"
+        placeholderTextColor="#000"
         value={movieTitle}
         onChangeText={text => setMovieTitle(text)}
       />
@@ -199,7 +200,7 @@ const AddEditMovieScreen = ({navigation, route}) => {
         {movieImage ? (
           <Image source={{uri: movieImage}} style={styles.image} />
         ) : (
-          <Text>Select Image</Text>
+          <Text style={{color: 'black'}}>Select Image</Text>
         )}
       </TouchableOpacity>
 
@@ -225,6 +226,7 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 5,
     padding: 10,
+    color: 'black',
     marginBottom: 20,
     width: '100%',
   },
@@ -245,6 +247,7 @@ const styles = StyleSheet.create({
   image: {
     width: 200,
     height: 200,
+    color: 'black',
   },
   submitButton: {
     backgroundColor: 'blue',

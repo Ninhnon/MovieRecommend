@@ -65,7 +65,7 @@ const NewUser = ({navigation}) => {
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text style={{fontSize: 18, marginBottom: 10}}>
+      <Text style={{fontSize: 18, marginBottom: 10, color: 'black'}}>
         Hãy Chọn ít nhất 1 thể loại phim yêu thích:
       </Text>
       <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
